@@ -1,6 +1,6 @@
 void selectionSort(int *ara, int size)
 {
-    int i, j, min_index;
+    int i, j, min_index, temp;
 
     for (i = 0; i < size; i++) {
         min_index = i;
@@ -9,9 +9,9 @@ void selectionSort(int *ara, int size)
                 min_index = j;
         }
         if (min_index != i) {
-            ara[i] = ara[i] - ara[min_index];
-            ara[min_index] = ara[i] + ara[min_index];
-            ara[i] = ara[min_index] - ara[i];
+            temp = ara[i];
+            ara[i] = ara[min_index];
+            ara[min_index] = temp;
         }
     }
 }
