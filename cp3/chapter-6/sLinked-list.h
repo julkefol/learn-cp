@@ -51,3 +51,35 @@ void print_linked_list(Node *head)
 
     printf("\n");
 }
+
+Node *remove_node(Node *head, Node *node)
+{
+    if (node == head) {
+        head = head->next; // if the linked list has only one element then
+                           // the pointer would point to NULL
+        free(node);
+        return head;
+    }
+
+    Node *current_node = head;
+    // comparing with NULL. what if the 'node' isn't present the linked list?
+    while (current_node->next != NULL) {
+        if (current_node->next == node)
+            break;
+        current_node = current_node->next;
+    }
+
+    if (current_node == NULL)
+        return head;
+
+    current_node->next = node->next;
+    free(node);
+
+    return head;
+}
+
+void insert_node(Node *node, int item)
+{
+    Node *new_node = create_node(item, node->next);
+    node->next = new_node;
+}
