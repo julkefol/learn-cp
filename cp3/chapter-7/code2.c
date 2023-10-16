@@ -1,6 +1,19 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "bin-tree.h"
+#include "btTraverse.h"
+
+/*
+ *              _2_
+ *             /   \
+ *            7     9
+ *           / \     \
+ *          1   6     8
+ *             / \   / \
+ *            5  10 3   4
+ *
+ * */
 
 Node *create_tree()
 {
@@ -32,21 +45,16 @@ Node *create_tree()
     return two;
 }
 
-void post_order(Node *node)
-{
-    if (node->left)
-        post_order(node->left);
-    if (node->right)
-        post_order(node->right);
-
-    printf("%d ", node->data);
-}
-
 int main()
 {
     Node *root = create_tree();
-    post_order(root);
-    puts("");
+    printf("%d\n", root->data);
 
-	return 0;
+    pre_order(root);
+    printf("\n");
+    post_order(root);
+    printf("\n");
+    in_order(root);
+
+    return 0;
 }
