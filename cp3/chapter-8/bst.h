@@ -78,3 +78,32 @@ Node *bst_search(Node *root, int item)
 
     return node;
 }
+
+Node *bst_minimum(Node *root)
+{
+    Node *node = root;
+
+    while (node->left != NULL)
+        node = node->left;
+    return node;
+}
+
+Node *bst_transplant(Node *root, 
+                    Node *current_node, 
+                    Node *new_node)
+{
+    if (current_node == root)
+        root = new_node;
+    else if (current_node == current_node->parent->left)
+        add_left_child(current_node->parent, new_node);
+    else 
+        add_right_child(current_node->parent, new_node);
+
+    return root;
+}
+
+Node *bst_delete(Node *root, Node *node)
+{
+    Node *smallest_node;
+
+}
